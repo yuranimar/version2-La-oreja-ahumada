@@ -340,26 +340,27 @@
 #menu .card {
   border-radius: 10px;
   overflow: hidden;
-  transform: translateY(30px);
   opacity: 0;
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  transform: translateY(30px);
+  transition: all 0.6s ease-in-out;
 }
 
 #menu .card.visible {
-  transform: translateY(0);
   opacity: 1;
+  transform: translateY(0);
 }
 
 #menu .card-img-top {
-  height: 200px;
+  height: 220px;
   width: 100%;
-  object-fit: cover;
-  filter: brightness(0.9) saturate(1.1);
-  transition: filter 0.3s ease;
+  object-fit: contain; /* 🔄 Usamos contain para no recortar la imagen */
+  padding: 10px;
+  transition: transform 0.3s ease;
+  background-color: #fff;
 }
 
 #menu .card:hover .card-img-top {
-  filter: brightness(1) saturate(1.2);
+  transform: scale(1.05);
 }
 
 #menu .card-body {
@@ -379,17 +380,28 @@
   margin-bottom: 1rem;
 }
 
-@media (max-width: 767.98px) {
+/* ✅ Mostrar 2 columnas en móviles */
+@media (max-width: 575.98px) {
+  .row-cols-1 > * {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
   #menu .card-img-top {
     height: 180px;
   }
 }
-
-@media (max-width: 575.98px) {
-  #menu .card-img-top {
-    height: 160px;
+/* ✅ Mostrar 3 columnas en pantallas medianas */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .row-cols-1 > * {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
   }
-}
+
+  #menu .card-img-top {
+    height: 200px;
+  }
+}       
 
 /* =====================
    SECCIÓN SLIDER EVENTOS
@@ -467,6 +479,9 @@
 /* ======================
    SECCIÓN PROPIETARIOS
 ======================= */
+/* ======================
+   SECCIÓN PROPIETARIOS
+======================= */
 
 .propietarios-section {
   background-color: #fff;
@@ -492,17 +507,37 @@
 
 /* Cada propietario */
 .propietario-card {
-  background-color: #fff;
+  background: linear-gradient(180deg, #ffffff 0%, #f9f9f9 100%);
+  border: 1px solid #f2f2f2;
   border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+
+  /* Animación al aparecer */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Delay en cascada */
+.propietario-card:nth-child(1) { animation-delay: 0s; }
+.propietario-card:nth-child(2) { animation-delay: 0.1s; }
+.propietario-card:nth-child(3) { animation-delay: 0.2s; }
+.propietario-card:nth-child(4) { animation-delay: 0.3s; }
+/* Agrega más según sea necesario */
+
 .propietario-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  transform: translateY(-12px);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* Imagen del propietario */
@@ -510,6 +545,8 @@
   width: 100%;
   height: 320px;
   object-fit: cover;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   transition: transform 0.4s ease;
 }
 
@@ -547,6 +584,8 @@
     font-size: 0.9rem;
   }
 }
+
+
 
 /* Reviews Section */
 #reseñas {
