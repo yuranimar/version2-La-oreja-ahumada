@@ -1,0 +1,873 @@
+/* ========================
+   VARIABLES
+======================== */
+:root {
+  --white: #ffffff;
+   --secondary-color: #dc3545;
+  --light-grey: #f8f9fa;
+  --dark-color: #343a40;
+  --text-color: #555;
+}
+
+/* ========================
+   NAVBAR PERSONALIZADO
+======================== */
+.navbar-custom {
+  background: linear-gradient(to right, #4b0000, #8b0000, #dc3545);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  animation: fadeIn 1s ease-out;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+}
+
+/* Ajuste para móviles pequeños */
+@media (max-width: 576px) {
+  .navbar-custom {
+    clip-path: none;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+}
+
+.navbar-custom .container {
+  padding-bottom: 20px;
+}
+
+/* ========================
+   LOGO
+======================== */
+.logo-container {
+  padding: 5px 0;
+}
+
+.logo-img {
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+/* ========================
+   NAVEGACIÓN DESKTOP
+======================== */
+.navbar-collapse {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 1.5rem;
+}
+
+.nav-links .nav-item {
+  margin: 0;
+  position: relative;
+}
+
+.nav-links .nav-link {
+  color: var(--white);
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-links .nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.nav-links .nav-link:hover::before,
+.nav-links .nav-link.active::before {
+  transform: translateX(0);
+}
+
+.nav-links .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ========================
+   ICONOS REDES SOCIALES
+======================== */
+.social-icons a {
+  color: var(--white);
+  font-size: 1.5rem;
+  margin-left: 15px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: translateY(-3px) scale(1.1);
+}
+
+.social-icons a.facebook:hover { color: #3b5998; }
+.social-icons a.instagram:hover { color: #C13584; }
+.social-icons a.whatsapp:hover { color: #25d366; }
+
+/* ========================
+   BOTÓN MENÚ HAMBURGUESA
+======================== */
+.menu-toggle {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: none;
+  z-index: 1100;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+/* ========================
+   RESPONSIVE MENU
+======================== */
+@media (max-width: 991.98px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to bottom, #8b0000, #dc3545);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+  }
+
+  .navbar-collapse.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+    animation: slideInDown 0.4s ease forwards;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links .nav-item {
+    margin: 10px 0;
+  }
+
+  .nav-links .nav-link {
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-links .nav-link:last-child {
+    border-bottom: none;
+  }
+
+  .social-icons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .social-icons a {
+    margin: 0 10px;
+  }
+}
+
+/* ========================
+   ANIMACIONES NAV
+======================== */
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* ========================
+   SECCIÓN HERO
+======================== */
+.hero-section {
+    background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092') no-repeat center center/cover;
+    height: 70vh;
+    position: relative;
+    color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6); /* aumento de opacidad para mejor contraste */
+      z-index: 1;
+    }
+
+    .hero-overlay {
+      position: relative;
+      z-index: 2;
+      background: rgba(0, 0, 0, 0.75); /* más oscuro para contraste */
+      backdrop-filter: blur(5px);
+      padding: 3rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 1.5s ease-out, slideInUp 1s ease-out;
+    }
+
+    .hero-title {
+      font-family: 'Pacifico', cursive;
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      font-weight: 900;
+      color: #ffffff;
+      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
+    }
+
+    .hero-subtitle {
+      font-size: 1.7rem;
+      font-weight: 600;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: #f9f9f9;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+    }
+
+    .btn-outline-light {
+      color: var(--white);
+      border-color: var(--white);
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      transition: all 0.3s ease-in-out;
+      background-color: transparent;
+    }
+
+    .btn-outline-light:hover {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+/* =========================
+   SECCIÓN MENÚ
+======================== */
+
+#menu {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background: radial-gradient(circle at top left, var(--secondary-color) 0%, var(--light-grey) 100%);
+}
+
+/* =========================
+   SECCIÓN MENÚ COMPLETO
+======================== */
+#menu {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background: radial-gradient(circle at top left, var(--secondary-color, #f0e6e6) 0%, var(--light-grey, #ffffff) 100%);
+}
+
+/* Título con estilo */
+.menu-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: 2.2rem;
+  text-align: center;
+  background: linear-gradient(90deg, #8B0000, #e63946, #8B0000);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  margin-bottom: 3rem;
+}
+
+/* Tarjetas del menú */
+#menu .card {
+  border-radius: 10px;
+  overflow: hidden;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#menu .card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+#menu .card-img-top {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  filter: brightness(0.9) saturate(1.1);
+  transition: filter 0.3s ease;
+}
+
+#menu .card:hover .card-img-top {
+  filter: brightness(1) saturate(1.2);
+}
+
+#menu .card-body {
+  padding: 1.5rem;
+}
+
+#menu .card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--dark-color, #000);
+  margin-bottom: 0.75rem;
+}
+
+#menu .card-text {
+  font-size: 0.95rem;
+  color: var(--text-color, #333);
+  margin-bottom: 1rem;
+}
+
+/* Scroll reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Retrasos para animación de tarjetas */
+#menu .col:nth-child(1) .card { transition-delay: 0.1s; }
+#menu .col:nth-child(2) .card { transition-delay: 0.2s; }
+#menu .col:nth-child(3) .card { transition-delay: 0.3s; }
+#menu .col:nth-child(4) .card { transition-delay: 0.4s; }
+#menu .col:nth-child(5) .card { transition-delay: 0.5s; }
+#menu .col:nth-child(6) .card { transition-delay: 0.6s; }
+#menu .col:nth-child(7) .card { transition-delay: 0.7s; }
+#menu .col:nth-child(8) .card { transition-delay: 0.8s; }
+#menu .col:nth-child(9) .card { transition-delay: 0.9s; }
+#menu .col:nth-child(10) .card { transition-delay: 1s; }
+#menu .col:nth-child(11) .card { transition-delay: 1.1s; }
+#menu .col:nth-child(12) .card { transition-delay: 1.2s; }
+
+/* Responsivo: ajustar altura de imágenes */
+@media (max-width: 767.98px) {
+  #menu .card-img-top {
+    height: 180px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  #menu .card-img-top {
+    height: 160px;
+  }
+}
+
+
+
+/* ========================
+   SECCIÓN SLIDER
+======================== */
+
+.slider-section {
+  background: #fff9f2;
+  padding: 40px 20px;
+  position: relative;
+}
+
+.slider-container {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  will-change: transform;
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  animation: fadeIn 0.8s ease;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+}
+
+.caption {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 1rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ff6347;
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 24px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+}
+
+.slider-btn:hover {
+  background: #e74c3c;
+}
+
+.prev {
+  left: 15px;
+}
+
+.next {
+  right: 15px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0.3; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  .caption {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .slider-btn {
+    padding: 10px 14px;
+    font-size: 20px;
+  }
+}
+
+
+/* ======================
+   SECCIÓN PROPIETARIOS
+======================= */
+
+.propietarios-section {
+  background-color: #fff;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.propietarios-section h2 {
+  font-size: 2.5rem;
+  color: #e74c3c; /* rojo logo */
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Contenedor de cards */
+.propietarios-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Cada propietario */
+.propietario-card {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.propietario-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Imagen del propietario */
+.propietario-card img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.propietario-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Nombre y descripción */
+.propietario-info {
+  padding: 1.5rem;
+}
+
+.propietario-info h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.propietario-info p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Responsive menor tamaño */
+@media (max-width: 600px) {
+  .propietario-card img {
+    height: 220px;
+  }
+
+  .propietario-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .propietario-info p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Reviews Section */
+#reseñas {
+    padding: 5rem 0;
+    background: linear-gradient(to right, #212529, #495057); /* Dark gradient for a sophisticated look */
+}
+
+#reseñas h2 {
+    color: var(--white);
+    margin-bottom: 3rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#reseñas .border {
+    border: none !important; /* Override Bootstrap border */
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--white); /* White background for review cards */
+}
+
+#reseñas .border:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+#reseñas p {
+    font-style: italic; /* Italicize quotes */
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+#reseñas h5 {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Contact Section */
+.contact-card-section {
+    padding: 5rem 0;
+    background: var(--secondary-color);
+}
+
+.contact-card {
+    background: linear-gradient(to bottom right, var(--primary-color), #b02a37); /* Red gradient */
+    color: var(--white);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+.contact-card h2 {
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.contact-card p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.contact-form {
+    display: grid;
+    gap: 15px; /* Space between form elements */
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white input */
+    color: var(--white);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Lighter placeholder text */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--white);
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25); /* Focus highlight */
+}
+
+.contact-form button {
+    background-color: var(--dark-color);
+    color: var(--white);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.contact-form button:hover {
+    background-color: black;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer */
+.custom-footer {
+    background: linear-gradient(to right, #212529, #495057); /* Dark gradient similar to reviews */
+    color: var(--white);
+    padding: 3rem 0;
+    text-align: center;
+    box-shadow: inset 0 8px 15px rgba(0, 0, 0, 0.3); /* Inner shadow for depth */
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: space-around;
+    gap: 30px; /* Space between columns */
+}
+
+.footer-col {
+    flex: 1; /* Allows columns to grow/shrink */
+    min-width: 250px; /* Minimum width for each column before wrapping */
+    padding: 0 15px;
+    text-align: left; /* Align text left within columns */
+}
+
+.footer-col h4 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-family: 'Bitter', serif;
+    font-size: 1.4rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1); /* Underline for footer titles */
+    padding-bottom: 10px;
+    display: inline-block; /* To make border-bottom fit content width */
+}
+
+.footer-col p,
+.footer-col a {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-col a:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments for Smaller Screens */
+@media (max-width: 767.98px) {
+    h2 {
+        font-size: 2rem; /* Smaller headings on smaller screens */
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-overlay {
+        padding: 2rem;
+    }
+
+    #menu .card-img-top {
+        height: 180px; /* Slightly smaller menu images on mobile */
+    }
+
+    .slider-container {
+        width: 95%; /* Make slider take more width on smaller screens */
+    }
+
+    .slide img {
+        height: 300px; /* Adjust slider image height for mobile */
+    }
+
+    .slider-btn {
+        font-size: 1.5rem; /* Smaller buttons */
+        padding: 10px;
+    }
+
+    .slider-btn.prev {
+        left: 10px;
+    }
+
+    .slider-btn.next {
+        right: 10px;
+    }
+
+    .owner-card img {
+        height: 200px; /* Owners images a bit smaller on medium mobiles */
+    }
+
+    .contact-card {
+        padding: 2rem;
+    }
+
+    .contact-card h2 {
+        font-size: 1.8rem;
+    }
+
+    .footer-col {
+        min-width: 100%; /* Stack footer columns on very small screens */
+        text-align: center;
+    }
+    .footer-col h4 {
+        border-bottom: none; /* Remove underline in footer titles on mobile */
+        padding-bottom: 0;
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .btn-outline-light, .btn-danger {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .owner-card {
+        max-width: 90%; /* Adjusts the width for very small screens */
+    }
+    .owner-card img {
+        height: 180px; /* Owners images even smaller on very small mobiles */
+    }
+
+    .slide img {
+        height: 250px; /* Adjust slider image height for very small mobile */
+    }
+
+    .contact-card {
+        padding: 1.5rem;
+    }
+
+    .contact-card h2 {
+        font-size: 1.6rem;
+    }
+}

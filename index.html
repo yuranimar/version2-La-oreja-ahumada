@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>La Oreja Ahumada - Comidas Rápidas para Eventos y Celebraciones</title>
+
+    <link rel="icon" href="img/logo1.png" type="image/x-icon">
+
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@700&family=Montserrat:wght@400;600&family=Pacifico&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="description" content="¡Bienvenidos a La Oreja Ahumada! Ofrecemos comidas rápidas ahumadas de alta calidad para eventos, ferias, fiestas y celebraciones en Medellín y Antioquia. Sándwiches, perros, picadas y más.">
+    <meta name="keywords" content="comida rápida, picadas, arepas rellenas, salchipapas, chorizos, ahumados, eventos, ferias, fiestas, celebraciones, Medellín, Antioquia, pernil ahumado, chuzos, carne asada, hamburguesas">
+    <meta name="author" content="La Oreja Ahumada">
+
+    <meta property="og:title" content="La Oreja Ahumada - Comida Rápida Ahumada para Eventos en Medellín">
+    <meta property="og:description" content="Comidas rápidas ahumadas para tus eventos y celebraciones en Medellín y Antioquia. Delicias para cada ocasión.">
+   <meta property="og:image" content="https://www.tu-sitio.com/img/og-image.jpg">
+<meta property="og:url" content="https://www.tu-sitio.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="La Oreja Ahumada">
+    <meta property="og:locale" content="es_CO">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="La Oreja Ahumada - Comida Rápida para Eventos">
+    <meta name="twitter:description" content="Comidas rápidas ahumadas para tus eventos y celebraciones en Medellín y Antioquia.">
+    <meta name="twitter:image" content="https://www.tu-sitio.com/img/twitter-image.jpg"> </head>
+<body>
+
+<header class="navbar-custom">
+  <div class="container d-flex justify-content-between align-items-center py-3 flex-wrap">
+
+    <!-- Logo -->
+    <a class="logo-container d-flex align-items-center" href="#inicio" aria-label="Ir a inicio">
+      <img src="img/logo1.png" alt="Logo La Oreja Ahumada" class="logo-img me-2" width="100" height="80" />
+      <span class="d-none d-md-block text-white" style="font-family: 'Pacifico', cursive; font-size: 1.8rem;">La Oreja Ahumada</span>
+    </a>
+
+    <!-- Botón hamburguesa solo en móviles -->
+    <button class="menu-toggle d-lg-none ms-auto" id="menu-toggle" aria-label="Abrir menú">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Menú de navegación -->
+    <nav class="navbar-collapse d-flex flex-column flex-lg-row justify-content-between align-items-center w-100 mt-3 mt-lg-0" id="navbarNav">
+      
+      <!-- Enlaces -->
+      <ul class="nav-links navbar-nav flex-column flex-lg-row gap-3 mb-3 mb-lg-0">
+        <li class="nav-item"><a href="#inicio" class="nav-link active">INICIO</a></li>
+        <li class="nav-item"><a href="#menu" class="nav-link">MENÚ</a></li>
+        <li class="nav-item"><a href="#galeria-eventos" class="nav-link">GALERÍA</a></li>
+        <li class="nav-item"><a href="#propietarios" class="nav-link">PROPIETARIOS</a></li>
+        <li class="nav-item"><a href="#contacto" class="nav-link">CONTACTO</a></li>
+      </ul>
+
+      <!-- Redes sociales -->
+      <div class="social-icons d-flex gap-3">
+        <a href="#" class="facebook" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+
+ <main>
+    <!-- Imagen Hero -->
+    <section id="inicio" class="hero-section">
+      <div class="hero-overlay p-4 rounded shadow-lg">
+        <h1 class="hero-title">¡Bienvenidos a <span class="text-danger">La Oreja Ahumada!</span></h1>
+        <p class="hero-subtitle">
+          Ofrecemos comidas rápidas ahumadas para eventos, ferias, fiestas y celebraciones en pueblos de Medellín y Antioquia.
+        </p>
+        <div class="mt-4">
+          <a href="#menu" class="btn btn-outline-light me-3" aria-label="Ver nuestro menú de productos">
+            <i class="fas fa-book-open me-1"></i> Ver Menú
+          </a>
+          <a href="#contacto" class="btn btn-danger" aria-label="Contactar para eventos y pedidos especiales">
+            <i class="fas fa-calendar-alt me-1"></i> Solicitar Evento
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+<!-- Sección del menú -->
+<section id="menu">
+  <div class="container">
+    <h2 class="text-center menu-title mb-5">Nuestro Menú de Delicias Ahumadas</h2>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 reveal">
+          <img src="img/sandwich-pernil.jpg" class="card-img-top" alt="Sándwich de Pernil Ahumado">
+          <div class="card-body text-center">
+            <h3 class="card-title text-dark">Sándwich de Pernil Ahumado</h3>
+            <p class="card-text">Delicioso sándwich con pernil jugoso ahumado, pan suave y nuestras salsas artesanales.</p>
+            <p class="text-danger fw-bold">$15,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 reveal">
+          <img src="img/perro-pernil.jpg" class="card-img-top" alt="Perro de Pernil Ahumado">
+          <div class="card-body text-center">
+            <h3 class="card-title text-dark">Perro de Pernil Ahumado</h3>
+            <p class="card-text">Pan artesanal, pernil ahumado desmechado y vegetales frescos, bañado en salsa de la casa.</p>
+            <p class="text-danger fw-bold">$15,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 reveal">
+          <img src="img/pernil.jpg" class="card-img-top" alt="Pernil Ahumado al Plato">
+          <div class="card-body text-center">
+            <h3 class="card-title text-dark">Pernil Ahumado al Plato</h3>
+            <p class="card-text">Pernil de cerdo ahumado a la perfección, tierno por dentro y dorado por fuera.</p>
+            <p class="text-danger fw-bold">$22,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 reveal">
+          <img src="img/chuzo-cerdo.jpg" class="card-img-top" alt="Chuzo de Cerdo BBQ">
+          <div class="card-body text-center">
+            <h3 class="card-title text-dark">Chuzo de Cerdo BBQ</h3>
+            <p class="card-text">Trozos de cerdo en chuzo, bañados en salsa BBQ casera. Ideal para compartir.</p>
+            <p class="text-danger fw-bold">$9,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 reveal">
+          <img src="img/picada-oreja.jpg" class="card-img-top" alt="Picada Especial La Oreja">
+          <div class="card-body text-center">
+            <h3 class="card-title text-dark">Picada Especial La Oreja</h3>
+            <p class="card-text">Oreja crocante, papas en casco, plátano maduro y salsa de la casa.</p>
+            <p class="text-danger fw-bold">$20,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 reveal">
+          <img src="img/salchipapa.jpg" class="card-img-top" alt="Salchipapa Clásica">
+          <div class="card-body text-center">
+            <h3 class="card-title text-dark">Salchipapa Clásica</h3>
+            <p class="card-text">Papas en casco crujientes, salchichas y salsa de la casa.</p>
+            <p class="text-danger fw-bold">$12,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 reveal">
+          <img src="img/carne-asada.jpg" class="card-img-top" alt="Carne Asada a la Brasa">
+          <div class="card-body text-center">
+            <h3 class="card-title text-dark">Carne Asada a la Brasa</h3>
+            <p class="card-text">Corte de carne jugoso, asado a la brasa, con yuca o papa.</p>
+            <p class="text-danger fw-bold">$25,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 reveal">
+          <img src="img/chorizo.jpg" class="card-img-top" alt="Chorizo Artesanal">
+          <div class="card-body text-center">
+            <h3 class="card-title text-dark">Chorizo Artesanal</h3>
+            <p class="card-text">Chorizo casero asado con arepa o papa.</p>
+            <p class="text-danger fw-bold">$8,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 reveal">
+          <img src="img/hamburguesa.jpg" class="card-img-top" alt="Hamburguesa La Oreja">
+          <div class="card-body text-center">
+            <h3 class="card-title text-dark">Hamburguesa La Oreja</h3>
+            <p class="card-text">Carne jugosa, pan artesanal, verduras frescas y salsa especial.</p>
+            <p class="text-danger fw-bold">$22,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0 reveal">
+          <img src="img/costilla.jpg" class="card-img-top" alt="Costilla Ahumada">
+          <div class="card-body text-center">
+            <h3 class="card-title text-dark">Costilla Ahumada</h3>
+            <p class="card-text">Costilla suave, ahumada lentamente con especias y salsa especial.</p>
+            <p class="text-danger fw-bold">$22,000</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+      <!-- Sección del slider -->
+<div class="slider-container">
+  <button class="slider-btn prev" id="slider-prev" aria-label="Diapositiva anterior">&#10094;</button>
+
+  <div class="slider-track">
+    <div class="slider-item">
+      <img src="img/dabeiba.jpg" alt="Fiestas de Dabeiba, Antioquia" />
+      <p class="caption">Fiestas de Dabeiba – Celebrando la tradición con nuestras delicias ahumadas.</p>
+    </div>
+    <div class="slider-item">
+      <img src="img/fiesta-naranja-copacabana.jpg" alt="Fiesta de la Naranja en Copacabana" />
+      <p class="caption">Fiesta de la Naranja – Dulce sabor y energía local en cada plato.</p>
+    </div>
+    <div class="slider-item">
+      <img src="img/fiesta-pereza.jpg" alt="Fiestas de la Industria y el Comercio, Itagüí" />
+      <p class="caption">Fiestas de la Industria y el Comercio – Nuestro sabor en el Día de la Pereza.</p>
+    </div>
+  </div>
+
+  <button class="slider-btn next" id="slider-next" aria-label="Diapositiva siguiente">&#10095;</button>
+</div>
+
+
+<!-- Sección de propietarios -->
+        <section id="propietarios" class="about-section py-5">
+            <div class="container text-center">
+                <h2 class="mb-5">Conoce a los Fundadores de La Oreja Ahumada</h2>
+                <div class="row justify-content-center gap-4">
+                    <div class="owner-card col-md-5">
+                        <img src="img/marcos.jpg" alt="Retrato de Marcos, co-propietario de La Oreja Ahumada" class="img-fluid rounded-top">
+                        <div class="p-3">
+                            <h3>Marcos Moreno</h3>
+                            <p>Apasionado por los sabores intensos y el ahumado perfecto, Marcos es el chef encargado de preparar las carnes ahumadas y la famosa picada de oreja.</p>
+                            <a href="https://wa.me/573001234567?text=Hola%20Marcos%2C%20quiero%20hacer%20un%20pedido%20de%20comida%20ahumada" class="btn btn-danger w-100" target="_blank" aria-label="Contactar a Marcos por WhatsApp">
+                                <i class="fab fa-whatsapp"></i> Escríbele a Marcos
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="owner-card col-md-5">
+                        <img src="img/damaris.jpg" alt="Retrato de Damaris, co-propietaria de La Oreja Ahumada" class="img-fluid rounded-top">
+                        <div class="p-3">
+                            <h3>Damaris Velasquez</h3>
+                            <p>Siempre amable y organizada, Damaris se encarga de atender a nuestros valiosos clientes, coordinar pedidos y asegurar que tu experiencia sea perfecta.</p>
+                            <a href="https://wa.me/573008765432?text=Hola%20Damaris%2C%20quiero%20más%20información%20sobre%20sus%20servicios" class="btn btn-danger w-100" target="_blank" aria-label="Contactar a Damaris por WhatsApp">
+                                <i class="fab fa-whatsapp"></i> Escríbele a Damaris
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre-nosotros" class="py-5 bg-light text-center">
+            <div class="container">
+                <h2 class="mb-4">Nuestra Historia: La Pasión por el Sabor</h2>
+                <p class="lead">Somos Marcos y Damaris, una pareja apasionada por la cocina tradicional colombiana y la comida rápida con un toque auténtico y ahumado.</p>
+                <p>Con esfuerzo, dedicación y mucho amor por lo que hacemos, hemos creado <strong>La Oreja Ahumada</strong>. Nuestro objetivo es ofrecerte un espacio donde cada bocado te transporte a los sabores de casa, con ingredientes frescos, procesos ahumados únicos, atención cercana y precios justos. ¡Gracias por ser parte de nuestra historia!</p>
+            </div>
+        </section>
+
+        <section id="reseñas" class="py-5 bg-dark text-white text-center">
+            <div class="container">
+                <h2 class="mb-4">Lo que dicen nuestros Clientes Satisfechos</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="p-4 border rounded bg-white text-dark shadow">
+                            <p>“La mejor oreja ahumada que he probado en Medellín, ¡simplemente espectacular! La atención es de primera. ¡Recomendado 100%!”</p>
+                            <h5 class="mt-3 mb-0">- Carolina G.</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="p-4 border rounded bg-white text-dark shadow">
+                            <p>“Las picadas son brutales, muy completas y deliciosas. Siempre volvemos con mi familia para disfrutar de estas delicias ahumadas.”</p>
+                            <h5 class="mt-3 mb-0">- Andrés M.</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="p-4 border rounded bg-white text-dark shadow">
+                            <p>“Súper atentos, puntuales con los domicilios y la comida siempre llega calientita y sabrosa. Un servicio impecable.”</p>
+                            <h5 class="mt-3 mb-0">- Laura P.</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="contact-card-section py-5">
+            <div class="contact-card container">
+                <h2>¿Listo para tu Experiencia Ahumada? Contáctanos</h2>
+                <p>¿Tienes un pedido especial, deseas una comida para tu evento, o simplemente quieres saber más? Déjanos un mensaje:</p>
+                <form onsubmit="return enviarWhatsApp()" class="contact-form" id="formulario-contacto">
+
+                    <input type="text" name="nombre" id="nombre" placeholder="Tu Nombre Completo" required aria-label="Campo para ingresar tu nombre">
+                    <input type="email" name="email" placeholder="Tu Correo Electrónico" required aria-label="Campo para ingresar tu correo electrónico">
+                    <textarea name="mensaje" id="mensaje" rows="4" placeholder="Escribe tu mensaje o detalles del evento aquí..." required aria-label="Campo para escribir tu mensaje o consulta"></textarea>
+                    <button type="submit">Enviar mensaje por WhatsApp</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="custom-footer py-4">
+        <div class="footer-container container">
+            <div class="footer-col">
+                <h4>📍 Nuestra Ubicación</h4>
+                <p>Barrio Llanaditas<br>Medellín, Antioquia, Colombia</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>📞 Contáctanos Directamente</h4>
+                <strong>Marcos Moreno:</strong><br>
+                <a href="https://wa.me/573001234567" target="_blank" aria-label="Contactar a Marcos Moreno por WhatsApp">+57 300 123 4567</a><br>
+                <strong>Damaris Velasquez:</strong><br>
+                <a href="https://wa.me/573008765432" target="_blank" aria-label="Contactar a Damaris Velasquez por WhatsApp">+57 300 876 5432</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>🍴 Sobre La Oreja Ahumada</h4>
+                <p>Expertos en comidas rápidas ahumadas, picadas y servicio de catering para eventos, ferias y celebraciones.</p>
+                <p style="font-size: 13px;">&copy; <span id="currentYear"></span> La Oreja Ahumada. Todos los derechos reservados.</p>
+                <p style="font-size: 13px;">Desarrollado con ❤️ por Yurani Martínez</p>
+            </div>
+        </div>
+    </footer>
+
+    
+ <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    /* ============ 1. Año dinámico ============ */
+    const yearElement = document.getElementById('currentYear');
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear();
+    }
+
+    /* ============ 2. Envío a WhatsApp desde formulario ============ */
+    const whatsappForm = document.getElementById('formulario-contacto');
+    if (whatsappForm) {
+      whatsappForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const nombre = document.getElementById('nombre').value;
+        const email = document.getElementById('email').value;
+        const mensaje = document.getElementById('mensaje').value;
+        const numeroWhatsApp = '573123456789'; // Reemplaza por tu número real
+        const mensajeCompleto = `Hola, mi nombre es ${nombre}. Mi correo es ${email}. ${mensaje}`;
+        const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensajeCompleto)}`;
+        window.open(url, '_blank');
+        whatsappForm.reset();
+      });
+    }
+
+    /* ============ 3. Menú hamburguesa móvil ============ */
+    const toggle = document.getElementById('menu-toggle');
+    const navbar = document.getElementById('navbarNav');
+
+    if (toggle && navbar) {
+      toggle.addEventListener('click', function () {
+        navbar.classList.toggle('active');
+      });
+
+      const navLinks = document.querySelectorAll('.nav-links .nav-link');
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navbar.classList.remove('active');
+        });
+      });
+    }
+
+    /* ============ 4. Animación scroll reveal para tarjetas ============ */
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      for (let el of reveals) {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        const elementVisible = 100;
+        if (elementTop < windowHeight - elementVisible) {
+          el.classList.add('visible');
+        }
+      }
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll(); // Ejecutar en carga inicial
+
+    /* ============ 5. Slider de imágenes ============ */
+    const track = document.getElementById('slider-track');
+    const next = document.getElementById('next');
+    const prev = document.getElementById('prev');
+    let index = 0;
+
+    if (track && next && prev) {
+      const slides = track.children.length;
+
+      function updateSlider() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+      }
+
+      next.addEventListener('click', () => {
+        index = (index + 1) % slides;
+        updateSlider();
+      });
+
+      prev.addEventListener('click', () => {
+        index = (index - 1 + slides) % slides;
+        updateSlider();
+      });
+    }
+  });
+</script>
+
+
+
+   <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Animate.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</body>
+
+</html>
