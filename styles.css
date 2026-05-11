@@ -1,0 +1,3439 @@
+/* ===================================================
+   VARIABLES Y CONFIGURACIÓN GLOBAL
+=================================================== */
+
+:root{
+  --white: #ffffff;
+
+  --secondary-color: #dc3545;
+
+  --primary-dark: #4b0000;
+  --primary-red: #8b0000;
+
+  --orange-glow: #f5a623;
+
+  --orange-flame: #ff6a00;
+  --red-hot: #dc3545;
+
+  --amber-warm: #ffb347;
+  --amber-light: #ffcf99;
+
+  --text-primary: #1a1a1a;
+  --text-muted: #555555;
+  --text-light: rgba(255,255,255,.75);
+
+  --radius-card: 28px;
+
+  --transition-base: .3s ease;
+
+  --shadow-card:
+    0 15px 40px rgba(0,0,0,.08);
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  overflow-x: hidden;
+  font-family: 'Montserrat', sans-serif;
+  background: #000;
+  color: var(--white);
+}
+
+/* ===================================================
+   NAVBAR
+=================================================== */
+
+.navbar-custom{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(28, 4, 4, 0.96);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 1px 14px rgba(0,0,0,.22);
+
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  transition:
+    background .3s ease,
+    box-shadow .3s ease;
+}
+
+.navbar-custom .container{
+  width: min(1200px, 92%);
+
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  padding: 12px 20px;
+
+  position: relative;
+}
+
+/* ===================================================
+   LOGO
+=================================================== */
+
+.logo-container{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  text-decoration: none;
+
+  flex-shrink: 0;
+}
+
+.logo-container img{
+  width: 90px;
+  height: auto;
+
+  object-fit: contain;
+}
+
+.logo-brand-name{
+  font-family: 'Pacifico', cursive;
+
+  font-size: 2rem;
+
+  color: var(--orange-glow);
+
+  text-shadow:
+    0 2px 6px rgba(0,0,0,.4);
+}
+
+/* ===================================================
+   NAV LINKS
+=================================================== */
+
+.navbar-collapse{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  flex: 1;
+}
+
+.nav-links{
+  display: flex;
+  align-items: center;
+
+  gap: 1.6rem;
+
+  list-style: none;
+}
+
+.nav-link{
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size: .95rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  transition:
+    color .3s ease,
+    transform .3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active{
+  color: var(--amber-warm);
+}
+
+/* ===================================================
+   REDES SOCIALES
+=================================================== */
+
+.social-icons{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social-icons a{
+  color: #fff;
+
+  font-size: 1.1rem;
+
+  transition:
+    transform .3s ease,
+    color .3s ease;
+}
+
+.social-icons a:hover{
+  color: var(--orange-glow);
+
+  transform: scale(1.12);
+}
+
+/* ===================================================
+   BOTÓN HAMBURGUESA
+=================================================== */
+
+.menu-toggle{
+  display: none;
+
+  width: 46px;
+  height: 46px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background:
+    rgba(255,255,255,.14);
+
+  color: #fff;
+
+  cursor: pointer;
+
+  transition:
+    background .3s ease,
+    transform .3s ease;
+}
+
+.menu-toggle:hover{
+  background:
+    rgba(255,255,255,.22);
+
+  transform: scale(1.04);
+}
+
+.menu-toggle i{
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+/* ===================================================
+   HERO CINEMÁTICO
+=================================================== */
+
+.hero-section{
+  position: relative;
+
+  min-height: 100vh;
+
+  background:
+    url('img/varios1.jpg')
+    center center / cover no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  text-align: center;
+
+  background-attachment: fixed;
+}
+
+/* ===================================================
+   OVERLAY
+=================================================== */
+
+.hero-fire-overlay{
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(120,20,0,.85) 0%,
+      rgba(40,5,0,.75) 40%,
+      rgba(0,0,0,.55) 100%
+    );
+
+  z-index: 1;
+}
+
+/* ===================================================
+   EMBERS
+=================================================== */
+
+#ember-canvas{
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+/* ===================================================
+   CAPA DE HUMO
+=================================================== */
+
+.smoke-layer{
+  position: absolute;
+  inset: 0;
+
+  z-index: 3;
+
+  pointer-events: none;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+
+  overflow: hidden;
+
+  mix-blend-mode: screen;
+}
+
+/* ===================================================
+   SVG HUMO
+=================================================== */
+
+.smoke-svg{
+  width: 240px;
+  height: 420px;
+
+  opacity: .28;
+
+  filter: blur(8px);
+
+  transform: scale(1.15);
+}
+
+.smoke-svg-2{
+  opacity: .20;
+}
+
+/* ===================================================
+   TRAZOS HUMO
+=================================================== */
+
+.smoke-path{
+  fill: none;
+
+  /* tono cálido cinematográfico */
+  stroke: rgba(255,230,210,.88);
+
+  stroke-width: 26;
+
+  stroke-linecap: round;
+
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+}
+
+/* ===================================================
+   ANIMACIONES HUMO
+=================================================== */
+
+.smoke-path.s1{
+  animation:
+    smokeRise 7s ease-out infinite;
+}
+
+.smoke-path.s2{
+  animation:
+    smokeRise 8s ease-out 1.5s infinite;
+}
+
+.smoke-path.s3{
+  animation:
+    smokeRise 9s ease-out 3s infinite;
+}
+
+/* ===================================================
+   EFECTO HUMO
+=================================================== */
+
+@keyframes smokeRise{
+
+  0%{
+    stroke-dashoffset: 400;
+
+    opacity: 0;
+
+    transform:
+      translateY(40px)
+      scale(.9);
+  }
+
+  20%{
+    opacity: .95;
+  }
+
+  50%{
+    opacity: .65;
+  }
+
+  100%{
+    stroke-dashoffset: 0;
+
+    opacity: 0;
+
+    transform:
+      translateY(-80px)
+      scale(1.3);
+  }
+}
+
+/* ===================================================
+   HERO GLASS PREMIUM
+=================================================== */
+
+.hero-glass{
+  position: relative;
+
+  z-index: 5;
+
+  max-width: 620px;
+
+  margin-left: -8vw;
+
+  padding: 3rem 3.5rem;
+
+  border-radius: 24px;
+
+  background:
+    rgba(15,15,15,.42);
+
+  backdrop-filter:
+    blur(14px)
+    saturate(1.4);
+
+  -webkit-backdrop-filter:
+    blur(14px)
+    saturate(1.4);
+
+  border:
+    1px solid rgba(255,160,90,.18);
+
+  box-shadow:
+    0 8px 32px rgba(0,0,0,.5),
+    inset 0 0 40px rgba(255,80,0,.05);
+}
+
+/* ===================================================
+   SUBTÍTULO
+=================================================== */
+
+.hero-subtitle{
+  font-size:
+    clamp(1rem,2.2vw,1.25rem);
+
+  line-height: 1.7;
+
+  margin-bottom: 2.5rem;
+
+  color:
+    rgba(255,255,255,.86);
+}
+
+/* ===================================================
+   WRAPPER COMIDA
+=================================================== */
+
+.hero-food-wrapper{
+  position: relative;
+
+  z-index: 5;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 3rem;
+}
+
+/* ===================================================
+   GLOW DETRÁS DE LA COMIDA
+=================================================== */
+
+.hero-food-wrapper::before{
+  content: "";
+
+  position: absolute;
+
+  width: 75%;
+  height: 75%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,106,0,.35),
+      transparent 70%
+    );
+
+  filter: blur(35px);
+
+  z-index: -1;
+}
+
+/* ===================================================
+   IMAGEN FLOTANTE
+=================================================== */
+
+.floating-food{
+  width:
+    clamp(240px,30vw,420px);
+
+  aspect-ratio: 1;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  border:
+    5px solid rgba(255,255,255,.18);
+
+  animation:
+    floatFoodHero 6s ease-in-out infinite;
+
+  box-shadow:
+    0 0 28px rgba(255,100,0,.28),
+    0 20px 40px rgba(0,0,0,.38);
+}
+
+/* ===================================================
+   TEXTO SOBRE IMAGEN
+=================================================== */
+
+.floating-food-title{
+  position: absolute;
+
+  bottom: 18px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  padding:
+    .65rem 1.2rem;
+
+  border-radius: 50px;
+
+  background:
+    rgba(0,0,0,.48);
+
+  backdrop-filter:
+    blur(12px);
+
+  color: #fff;
+
+  font-size: .85rem;
+  font-weight: 600;
+
+  letter-spacing: .08em;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+
+  border:
+    1px solid rgba(255,255,255,.12);
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.35);
+}
+
+/* ===================================================
+   ANIMACIÓN COMIDA
+=================================================== */
+
+@keyframes floatFoodHero{
+
+  0%{
+    transform:
+      translateY(0)
+      rotate(-2deg);
+  }
+
+  50%{
+    transform:
+      translateY(-16px)
+      rotate(2deg);
+  }
+
+  100%{
+    transform:
+      translateY(0)
+      rotate(-2deg);
+  }
+}
+
+/* ===================================================
+   RESPONSIVE TABLET
+=================================================== */
+
+@media (max-width: 768px){
+
+  .smoke-layer{
+    justify-content: space-between;
+
+    padding: 0 .5rem;
+  }
+
+  .smoke-svg{
+    width: 170px;
+    height: 320px;
+
+    opacity: .34;
+
+    filter: blur(5px);
+
+    transform: scale(1.08);
+  }
+
+  .smoke-svg-2{
+    opacity: .26;
+  }
+
+  .smoke-path{
+    stroke-width: 22;
+  }
+
+  .hero-glass{
+    margin-left: 0;
+
+    padding: 2rem 1.5rem;
+
+    width: 100%;
+    max-width: 460px;
+
+    text-align: center;
+  }
+
+  .floating-food{
+    width:
+      clamp(200px,58vw,300px);
+  }
+
+  .floating-food-title{
+    font-size: .8rem;
+
+    padding:
+      .55rem 1rem;
+  }
+
+}
+
+/* ===================================================
+   MOBILE PEQUEÑO
+=================================================== */
+
+@media (max-width: 480px){
+
+  .smoke-svg{
+    width: 140px;
+    height: 260px;
+
+    opacity: .30;
+
+    filter: blur(4px);
+  }
+
+  .smoke-path{
+    stroke-width: 18;
+  }
+
+}
+/* ===================================================
+   WRAPPER IMAGEN HERO
+=================================================== */
+
+.hero-food-wrapper{
+  position: relative;
+
+  z-index: 5;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 2.5rem;
+}
+
+/* ===================================================
+   IMAGEN FLOTANTE
+=================================================== */
+
+.floating-food{
+  width: clamp(240px, 30vw, 420px);
+
+  aspect-ratio: 1;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  border:
+    5px solid rgba(255,255,255,.18);
+
+  animation:
+    floatFoodHero 6s ease-in-out infinite;
+
+  box-shadow:
+    0 0 28px rgba(255,100,0,.28),
+    0 20px 40px rgba(0,0,0,.38);
+}
+
+/* ===================================================
+   TEXTO ENCIMA DE LA IMAGEN
+=================================================== */
+
+.floating-food-title{
+  position: absolute;
+
+  bottom: 18px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  padding:
+    .7rem 1.3rem;
+
+  border-radius: 50px;
+
+  background:
+    rgba(0,0,0,.55);
+
+  backdrop-filter:
+    blur(10px);
+
+  color: #fff;
+
+  font-size: .95rem;
+  font-weight: 700;
+
+  letter-spacing: .05em;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.35);
+
+  border:
+    1px solid rgba(255,255,255,.15);
+}
+
+/* ===================================================
+   ANIMACIÓN
+=================================================== */
+
+@keyframes floatFoodHero{
+
+  0%{
+    transform:
+      translateY(0)
+      rotate(-2deg);
+  }
+
+  50%{
+    transform:
+      translateY(-16px)
+      rotate(2deg);
+  }
+
+  100%{
+    transform:
+      translateY(0)
+      rotate(-2deg);
+  }
+}
+
+/* ===================================================
+   RESPONSIVE
+=================================================== */
+
+@media (max-width: 768px){
+
+  .floating-food{
+    width:
+      clamp(200px, 58vw, 300px);
+  }
+
+  .floating-food-title{
+    font-size: .8rem;
+
+    padding:
+      .55rem 1rem;
+  }
+
+}
+/* ===================================================
+   HERO GLASS
+=================================================== */
+
+.hero-glass{
+  position: relative;
+
+  z-index: 5;
+
+  max-width: 620px;
+
+  margin-left: -8vw;
+
+  padding: 3rem 3.5rem;
+
+  border-radius: 24px;
+
+  background:
+    rgba(0,0,0,.45);
+
+  backdrop-filter:
+    blur(14px)
+    saturate(1.4);
+
+  -webkit-backdrop-filter:
+    blur(14px)
+    saturate(1.4);
+
+  border:
+    1px solid rgba(255,120,40,.25);
+
+  box-shadow:
+    0 8px 32px rgba(0,0,0,.5),
+    inset 0 0 40px rgba(255,80,0,.05);
+}
+
+/* ===================================================
+   HERO TEXTO
+=================================================== */
+
+.hero-badge{
+  display: inline-block;
+
+  margin-bottom: 1.2rem;
+
+  padding: 4px 16px;
+
+  border-radius: 50px;
+
+  font-size: .8rem;
+  font-weight: 600;
+
+  letter-spacing: .1em;
+
+  text-transform: uppercase;
+
+  color: var(--amber-warm);
+
+  background:
+    rgba(255,100,0,.18);
+
+  border:
+    1px solid rgba(255,120,40,.35);
+}
+
+.hero-title{
+  font-family: 'Pacifico', cursive;
+
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+
+  line-height: 1.05;
+
+  color: #fff;
+
+  margin-bottom: 1rem;
+
+  text-shadow:
+    0 4px 20px rgba(0,0,0,.6);
+}
+
+.hero-glow{
+  color: var(--orange-glow);
+
+  text-shadow:
+    0 0 20px rgba(255,106,0,.8),
+    0 0 50px rgba(255,80,0,.5),
+    0 4px 16px rgba(0,0,0,.5);
+}
+
+.hero-subtitle{
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+
+  line-height: 1.6;
+
+  margin-bottom: 2rem;
+
+  color:
+    rgba(255,255,255,.85);
+}
+
+/* ===================================================
+   BOTONES HERO
+=================================================== */
+
+.hero-cta-row{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 1rem;
+}
+
+.btn-hero-primary,
+.btn-hero-ghost{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 14px 30px;
+
+  border-radius: 50px;
+
+  text-decoration: none;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+.btn-hero-primary{
+  background:
+    linear-gradient(
+      135deg,
+      #c0392b 0%,
+      #8b0000 100%
+    );
+
+  color: #fff;
+
+  font-weight: 700;
+
+  letter-spacing: .03em;
+
+  box-shadow:
+    0 4px 18px rgba(120,0,0,.40);
+
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+.btn-hero-primary:hover{
+  transform: translateY(-3px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #d44332 0%,
+      #9b1010 100%
+    );
+
+  box-shadow:
+    0 8px 28px rgba(120,0,0,.50);
+}
+
+.btn-hero-ghost{
+  border:
+    2px solid rgba(255,255,255,.5);
+
+  color: #fff;
+
+  font-weight: 600;
+}
+
+.btn-hero-ghost:hover{
+  border-color: #ff6a00;
+
+  background:
+    rgba(255,106,0,.15);
+
+  transform: translateY(-3px);
+}
+
+/* ===================================================
+   RESPONSIVE TABLET Y MOBILE
+=================================================== */
+
+@media (max-width: 991.98px){
+
+  .navbar-custom{
+    border-radius: 0;
+  }
+
+  .navbar-custom .container{
+    padding: 12px 16px;
+  }
+
+  .logo-brand-name{
+    font-size: 1.6rem;
+  }
+
+  .menu-toggle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbar-collapse#navbarNav{
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+
+    padding: 2rem 1.5rem;
+
+    background: rgba(22, 4, 4, 0.98);
+
+    border-radius:
+      0 0 16px 16px;
+
+    box-shadow:
+      0 15px 40px rgba(0,0,0,.35);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 1.5rem;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-10px);
+
+    pointer-events: none;
+
+    transition:
+      opacity .3s ease,
+      transform .3s ease,
+      visibility .3s ease;
+  }
+
+  .navbar-collapse#navbarNav.active{
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+
+    pointer-events: auto;
+  }
+
+  .nav-links{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-icons{
+    justify-content: center;
+  }
+
+  .hero-section{
+    background-attachment: scroll;
+
+    padding:
+      6rem 1.2rem 3rem;
+
+    flex-direction: column;
+
+    gap: 2rem;
+  }
+
+  .hero-glass{
+    margin-left: 0;
+
+    width: 100%;
+    max-width: 460px;
+
+    padding: 2rem 1.5rem;
+
+    text-align: center;
+  }
+
+  .floating-food{
+  position: relative;
+
+  left: auto;
+  top: auto;
+  right: auto;
+
+  transform: none;
+
+  width:
+    clamp(170px,55vw,250px);
+
+  margin-top: 1rem;
+
+  animation:
+    floatFoodMobile 6s ease-in-out infinite;
+}
+
+  .hero-cta-row{
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px){
+
+  .logo-brand-name{
+    display: none;
+  }
+
+  .hero-title{
+    font-size: 3rem;
+  }
+
+  .hero-subtitle{
+    font-size: .95rem;
+  }
+
+  .btn-hero-primary,
+  .btn-hero-ghost{
+    width: 100%;
+  }
+
+}
+
+/* ===================================================
+   FLOAT MOBILE
+=================================================== */
+
+@keyframes floatFoodMobile{
+
+  0%{
+    transform:
+      translateY(0)
+      rotate(-2deg);
+  }
+
+  50%{
+    transform:
+      translateY(-14px)
+      rotate(2deg);
+  }
+
+  100%{
+    transform:
+      translateY(0)
+      rotate(-2deg);
+  }
+}
+
+/* ===================================================
+   SECCIÓN MENÚ
+=================================================== */
+
+#menu{
+  position: relative;
+
+  padding: 7rem 1.5rem;
+
+  background:
+    linear-gradient(
+      180deg,
+      #181818 0%,
+      #1d1d1d 50%,
+      #191919 100%
+    );
+
+  overflow: hidden;
+}
+
+/* ===================================================
+   TÍTULO
+=================================================== */
+
+.section-title{
+  text-align: center;
+
+  font-size: clamp(2.2rem, 5vw, 4rem);
+
+  margin-bottom: 4rem;
+
+  color: #fff;
+
+  font-family: 'Playfair Display', serif;
+
+  text-shadow:
+    0 4px 20px rgba(0,0,0,.5);
+}
+
+.section-title::after{
+  content: "";
+
+  display: block;
+
+  width: 120px;
+  height: 4px;
+
+  margin: 1rem auto 0;
+
+  border-radius: 50px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff6a00,
+      #dc3545
+    );
+}
+
+/* ===================================================
+   GRID
+=================================================== */
+
+.menu-grid{
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(280px, 1fr));
+
+  gap: 2rem;
+
+  max-width: 1300px;
+
+  margin: auto;
+}
+
+/* ===================================================
+   CARD
+=================================================== */
+
+.menu-card{
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+
+  background:
+    rgba(255,255,255,.05);
+
+  backdrop-filter: blur(14px);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  box-shadow:
+    0 10px 35px rgba(0,0,0,.35);
+
+  transition:
+    transform .45s ease,
+    box-shadow .45s ease,
+    border .45s ease;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100%;
+}
+
+/* ===================================================
+   HOVER CARD
+=================================================== */
+
+.menu-card:hover{
+  transform:
+    translateY(-6px);
+
+  border:
+    1px solid rgba(255,255,255,.14);
+
+  box-shadow:
+    0 16px 36px rgba(0,0,0,.28);
+}
+
+/* ===================================================
+   IMAGEN
+=================================================== */
+
+.menu-card__img{
+  width: 100%;
+  height: 240px;
+
+  object-fit: cover;
+
+  transition:
+    transform .6s ease,
+    filter .6s ease;
+}
+
+/* ZOOM */
+
+.menu-card:hover .menu-card__img{
+  transform: scale(1.08);
+
+  filter:
+    brightness(1.05)
+    saturate(1.15);
+}
+
+/* ===================================================
+   BODY
+=================================================== */
+
+.menu-card__body{
+  padding: 1.6rem;
+
+  display: flex;
+  flex-direction: column;
+
+  flex-grow: 1;
+}
+
+/* ===================================================
+   TITULO
+=================================================== */
+
+.menu-card__title{
+  font-size: 1.3rem;
+
+  margin-bottom: .9rem;
+
+  color: #fff;
+
+  font-weight: 700;
+
+  line-height: 1.3;
+}
+
+/* ===================================================
+   DESCRIPCIÓN
+=================================================== */
+
+.menu-card__desc{
+  color:
+    rgba(255,255,255,.78);
+
+  line-height: 1.7;
+
+  font-size: .95rem;
+
+  margin-bottom: 1.5rem;
+
+  flex-grow: 1;
+}
+
+/* ===================================================
+   PRECIO
+=================================================== */
+
+.menu-card__price{
+  display: inline-block;
+
+  align-self: flex-start;
+
+  padding: .7rem 1.2rem;
+
+  border-radius: 50px;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  color: #fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff6a00,
+      #dc3545
+    );
+
+  box-shadow:
+    0 8px 18px rgba(255,80,0,.35);
+}
+
+/* ===================================================
+   EFECTO BRILLO
+=================================================== */
+
+.menu-card::before{
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,.08),
+      transparent
+    );
+
+  transform: translateX(-100%);
+
+  transition: transform .8s ease;
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+.menu-card:hover::before{
+  transform: translateX(100%);
+}
+
+/* ===================================================
+   RESPONSIVE
+=================================================== */
+
+@media (max-width: 768px){
+
+  #menu{
+    padding: 5rem 1rem;
+  }
+
+  .menu-grid{
+    gap: 1.5rem;
+  }
+
+  .menu-card__img{
+    height: 220px;
+  }
+
+  .menu-card__body{
+    padding: 1.3rem;
+  }
+
+}
+
+@media (max-width: 576px){
+
+  .section-title{
+    margin-bottom: 3rem;
+  }
+
+  .menu-card{
+    border-radius: 22px;
+  }
+
+  .menu-card__img{
+    height: 200px;
+  }
+
+}
+
+/* =========================================================
+   GALERÍA PREMIUM — CLARA Y LIMPIA
+========================================================= */
+
+.gallery-section{
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 8rem 1.2rem;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fafafa 0%,
+      #f4f1ef 50%,
+      #fafafa 100%
+    );
+}
+
+/* =========================================================
+   EFECTO SUAVE
+========================================================= */
+
+.gallery-section::before{
+  content:"";
+
+  position:absolute;
+
+  width:420px;
+  height:420px;
+
+  top:-120px;
+  right:-120px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,0,0,.03),
+      transparent 72%
+    );
+
+  pointer-events:none;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.gallery-header{
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 680px;
+
+  margin:
+    0 auto 3.5rem;
+
+  text-align: center;
+}
+
+/* =========================================================
+   BADGE
+========================================================= */
+
+.gallery-badge{
+  display:inline-block;
+
+  padding:
+    .55rem 1.2rem;
+
+  border-radius:50px;
+
+  color: #8b0000;
+
+  background: rgba(139,0,0,.07);
+
+  border:
+    1px solid rgba(139,0,0,.14);
+
+  font-size:.82rem;
+
+  font-weight:700;
+
+  letter-spacing: .06em;
+
+  text-transform: uppercase;
+
+  margin-bottom:1.2rem;
+}
+
+/* =========================================================
+   TÍTULO
+========================================================= */
+
+.gallery-title{
+  font-family:
+    'Playfair Display',
+    serif;
+
+  font-size:
+    clamp(2.2rem,5vw,3.6rem);
+
+  color: #1a1a1a;
+
+  margin-bottom: 1.2rem;
+
+  font-weight: 700;
+
+  line-height: 1.15;
+
+  letter-spacing: -.5px;
+}
+
+/* =========================================================
+   LÍNEA
+========================================================= */
+
+.gallery-title::after{
+  content:"";
+
+  display:block;
+
+  width:70px;
+  height:3px;
+
+  margin:
+    1rem auto 0;
+
+  border-radius:50px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #c0392b,
+      #8b0000
+    );
+}
+
+/* =========================================================
+   TEXTO
+========================================================= */
+
+.gallery-text{
+  color:#5f5f5f;
+
+  line-height:1.9;
+
+  font-size:1rem;
+
+  max-width:680px;
+
+  margin:auto;
+}
+
+/* =========================================================
+   CONTENEDOR SLIDER
+========================================================= */
+
+#galeria-eventos{
+  position: relative;
+
+  z-index: 2;
+
+  width:
+    min(1100px,95%);
+
+  margin:auto;
+
+  overflow:hidden;
+
+  border-radius:20px;
+
+  background:#ffffff;
+
+  border:
+    1px solid rgba(0,0,0,.08);
+
+  box-shadow:
+    0 4px 6px rgba(0,0,0,.04),
+    0 20px 50px rgba(0,0,0,.10);
+}
+
+/* =========================================================
+   TRACK
+========================================================= */
+
+.slider__track{
+  display:flex;
+
+  transition:
+    transform .8s ease;
+}
+
+/* =========================================================
+   ITEM
+========================================================= */
+
+.slider__item{
+  min-width:100%;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+/* =========================================================
+   IMAGEN
+========================================================= */
+
+.slider__item img{
+  width:100%;
+
+  height:650px;
+
+  object-fit:cover;
+
+  display:block;
+
+  transition:
+    transform .7s ease,
+    filter .5s ease;
+
+  filter:
+    brightness(.96)
+    contrast(1.01)
+    saturate(1.01);
+}
+
+/* =========================================================
+   HOVER IMAGEN
+========================================================= */
+
+.slider__item:hover img{
+  transform:scale(1.02);
+
+  filter:
+    brightness(1);
+}
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.slider__item::after{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.55) 0%,
+      rgba(0,0,0,.15) 45%,
+      transparent 75%
+    );
+
+  z-index:1;
+}
+
+/* =========================================================
+   CAPTION
+========================================================= */
+
+.slider__caption{
+  position:absolute;
+
+  left:0;
+  bottom:0;
+
+  width:100%;
+
+  padding: 2.5rem 2.5rem 2rem;
+
+  z-index:3;
+
+  color:#fff;
+}
+
+/* =========================================================
+   UBICACIÓN
+========================================================= */
+
+.slider__location{
+  display:inline-block;
+
+  margin-bottom:.9rem;
+
+  padding:.4rem .9rem;
+
+  border-radius:50px;
+
+  background:
+    rgba(255,255,255,.18);
+
+  backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255,255,255,.22);
+
+  font-size:.8rem;
+
+  font-weight:600;
+
+  letter-spacing: .05em;
+
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   TITULO CAPTION
+========================================================= */
+
+.slider__caption h3{
+  font-size: clamp(1.4rem, 3vw, 2rem);
+
+  margin-bottom:.6rem;
+
+  font-family:
+    'Playfair Display',
+    serif;
+
+  font-weight: 700;
+
+  color:#fff;
+
+  text-shadow: 0 2px 10px rgba(0,0,0,.3);
+}
+
+/* =========================================================
+   TEXTO CAPTION
+========================================================= */
+
+.slider__caption p{
+  color:
+    rgba(255,255,255,.92);
+
+  line-height:1.7;
+
+  max-width:560px;
+
+  font-size:.93rem;
+}
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+.slider__btn{
+  position:absolute;
+
+  top:50%;
+
+  transform:
+    translateY(-50%);
+
+  z-index:10;
+
+  width:46px;
+  height:46px;
+
+  border:none;
+
+  border-radius:50%;
+
+  cursor:pointer;
+
+  color: #2a2a2a;
+
+  font-size:.95rem;
+
+  background:
+    rgba(255,255,255,.94);
+
+  border:
+    1px solid rgba(0,0,0,.06);
+
+  box-shadow:
+    0 2px 12px rgba(0,0,0,.12);
+
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    color .25s ease,
+    box-shadow .25s ease;
+}
+
+/* =========================================================
+   HOVER BOTONES
+========================================================= */
+
+.slider__btn:hover{
+  transform:
+    translateY(-50%)
+    scale(1.06);
+
+  background: #8b0000;
+
+  color: #fff;
+
+  box-shadow:
+    0 6px 20px rgba(100,0,0,.25);
+}
+
+/* =========================================================
+   POSICIONES
+========================================================= */
+
+.slider__btn--prev{
+  left:18px;
+}
+
+.slider__btn--next{
+  right:18px;
+}
+
+/* =========================================================
+   DOTS
+========================================================= */
+
+.slider-dots{
+  position:absolute;
+
+  left:50%;
+  bottom:20px;
+
+  transform:
+    translateX(-50%);
+
+  display:flex;
+
+  gap:.5rem;
+
+  z-index:12;
+}
+
+.slider-dot{
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:
+    rgba(255,255,255,.45);
+
+  transition:
+    transform .3s ease,
+    background .3s ease,
+    width .3s ease;
+}
+
+.slider-dot.active{
+  background:#ffffff;
+
+  width: 22px;
+
+  border-radius: 4px;
+
+  transform: none;
+}
+
+/* =========================================================
+   RESPONSIVE TABLET
+========================================================= */
+
+@media (max-width:992px){
+
+  .slider__item img{
+    height:520px;
+  }
+
+}
+
+/* =========================================================
+   RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width:768px){
+
+  .gallery-section{
+    padding:5rem 1rem;
+  }
+
+  .gallery-title{
+    font-size:2.2rem;
+  }
+
+  #galeria-eventos{
+    border-radius:22px;
+  }
+
+  .slider__item img{
+    height:400px;
+  }
+
+  .slider__caption{
+    padding:1.3rem;
+  }
+
+  .slider__caption h3{
+    font-size:1.3rem;
+  }
+
+  .slider__caption p{
+    font-size:.9rem;
+
+    line-height:1.7;
+  }
+
+  .slider__btn{
+    width:44px;
+    height:44px;
+  }
+
+}
+
+/* =========================================================
+   MOBILE PEQUEÑO
+========================================================= */
+
+@media (max-width:576px){
+
+  .gallery-title{
+    font-size:1.9rem;
+  }
+
+  .gallery-text{
+    font-size:.92rem;
+  }
+
+  .slider__item img{
+    height:300px;
+  }
+
+  .slider__caption{
+    padding:1rem;
+  }
+
+  .slider__location{
+    font-size:.75rem;
+  }
+
+  .slider__caption p{
+    font-size:.82rem;
+  }
+
+  .slider__btn{
+    width:40px;
+    height:40px;
+  }
+
+}
+
+/* =========================================================
+   SECCIÓN PROPIETARIOS PREMIUM
+========================================================= */
+
+.section-founders{
+  position: relative;
+  overflow: hidden;
+
+  padding: 7rem 1.2rem;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #fff5f1 50%,
+      #ffffff 100%
+    );
+}
+
+/* =========================================================
+   EFECTOS FONDO
+========================================================= */
+
+.section-founders::before{
+  content:"";
+
+  position:absolute;
+
+  width:500px;
+  height:500px;
+
+  top:-180px;
+  right:-150px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,106,0,.10),
+      transparent 70%
+    );
+
+  animation:
+    foundersGlow 10s ease-in-out infinite;
+
+  pointer-events:none;
+}
+
+@keyframes foundersGlow{
+
+  0%,100%{
+    transform: scale(1);
+    opacity:.7;
+  }
+
+  50%{
+    transform: scale(1.15);
+    opacity:1;
+  }
+
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.founders-intro{
+  position: relative;
+  z-index: 2;
+
+  text-align:center;
+
+  max-width:800px;
+
+  margin:
+    0 auto 5rem;
+}
+
+/* BADGE */
+
+.founders-badge{
+  display:inline-block;
+
+  padding:
+    .7rem 1.4rem;
+
+  border-radius:50px;
+
+  background:
+    rgba(220,53,69,.08);
+
+  border:
+    1px solid rgba(220,53,69,.15);
+
+  color:#dc3545;
+
+  font-size:.9rem;
+  font-weight:700;
+
+  margin-bottom:1.5rem;
+}
+
+/* TITULO */
+
+.founders-title{
+  font-family:
+    'Playfair Display',
+    serif;
+
+  font-size:
+    clamp(2.5rem,5vw,4rem);
+
+  color:#1a1a1a;
+
+  margin-bottom:1.2rem;
+
+  line-height:1.1;
+
+  font-weight:800;
+}
+
+/* LINEA */
+
+.founders-title::after{
+  content:"";
+
+  display:block;
+
+  width:100px;
+  height:4px;
+
+  margin:
+    1rem auto 0;
+
+  border-radius:50px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff6a00,
+      #dc3545
+    );
+}
+
+/* TEXTO */
+
+.founders-subtitle{
+  color:#666;
+
+  line-height:1.9;
+
+  font-size:1rem;
+}
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.founders-grid{
+  position: relative;
+  z-index: 2;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
+  gap:3rem;
+
+  max-width:1200px;
+
+  margin:auto;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.founder-item{
+  position: relative;
+
+  overflow:hidden;
+
+  border-radius:32px;
+
+  background:
+    rgba(255,255,255,.72);
+
+  backdrop-filter: blur(12px);
+
+  border:
+    1px solid rgba(255,255,255,.65);
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.08);
+
+  transition:
+    transform .45s ease,
+    box-shadow .45s ease;
+}
+
+/* HOVER */
+
+.founder-item:hover{
+  transform:
+    translateY(-10px);
+
+  box-shadow:
+    0 30px 70px rgba(220,53,69,.15);
+}
+
+/* =========================================================
+   FOTO
+========================================================= */
+
+.founder-photo{
+  position: relative;
+
+  overflow:hidden;
+
+  height:480px;
+}
+
+/* IMAGEN */
+
+.founder-photo img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  transition:
+    transform .8s ease,
+    filter .5s ease;
+
+  filter:
+    grayscale(15%)
+    contrast(1.05);
+}
+
+/* HOVER IMG */
+
+.founder-item:hover .founder-photo img{
+  transform:scale(1.06);
+
+  filter:
+    grayscale(0%)
+    saturate(1.08);
+}
+
+/* OVERLAY */
+
+.founder-photo::after{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.65),
+      transparent 55%
+    );
+}
+
+/* =========================================================
+   INFO
+========================================================= */
+
+.founder-info{
+  position: relative;
+
+  padding:2rem;
+
+  text-align:center;
+}
+
+/* NOMBRE */
+
+.founder-info h3{
+  font-size:1.9rem;
+
+  color:#1a1a1a;
+
+  margin-bottom:.5rem;
+
+  font-family:
+    'Playfair Display',
+    serif;
+}
+
+/* CARGO */
+
+.founder-info span{
+  display:inline-block;
+
+  margin-bottom:1.2rem;
+
+  padding:
+    .45rem 1rem;
+
+  border-radius:50px;
+
+  background:
+    rgba(220,53,69,.08);
+
+  color:#dc3545;
+
+  font-size:.85rem;
+  font-weight:700;
+
+  letter-spacing:.5px;
+}
+
+/* TEXTO */
+
+.founder-info p{
+  color:#555;
+
+  line-height:1.9;
+
+  font-size:.97rem;
+
+  margin-bottom:1.8rem;
+}
+
+/* =========================================================
+   BOTÓN
+========================================================= */
+
+.btn-contact{
+  position: relative;
+
+  overflow:hidden;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  gap:.6rem;
+
+  padding:
+    14px 26px;
+
+  border-radius:60px;
+
+  text-decoration:none;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff6a00,
+      #dc3545
+    );
+
+  color:#fff;
+
+  font-size:.95rem;
+  font-weight:700;
+
+  box-shadow:
+    0 10px 25px rgba(220,53,69,.2);
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+/* BRILLO */
+
+.btn-contact::before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,.22),
+      transparent
+    );
+
+  transform:translateX(-100%);
+
+  transition:
+    transform .7s ease;
+}
+
+.btn-contact:hover::before{
+  transform:translateX(100%);
+}
+
+/* HOVER */
+
+.btn-contact:hover{
+  transform:
+    translateY(-4px)
+    scale(1.03);
+
+  box-shadow:
+    0 15px 35px rgba(220,53,69,.35);
+}
+
+/* =========================================================
+   RESPONSIVE TABLET
+========================================================= */
+
+@media (max-width:992px){
+
+  .founders-grid{
+    gap:2rem;
+  }
+
+  .founder-photo{
+    height:380px;
+  }
+
+}
+
+/* =========================================================
+   RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width:768px){
+
+  .section-founders{
+    padding:5rem 1rem;
+  }
+
+  .founders-grid{
+    grid-template-columns:1fr;
+
+    gap:1.8rem;
+  }
+
+  .founder-photo{
+    height:340px;
+  }
+
+  .founder-info{
+    padding:1.5rem;
+  }
+
+  .founder-info h3{
+    font-size:1.5rem;
+  }
+
+  .founder-info p{
+    font-size:.92rem;
+  }
+
+}
+
+/* =========================================================
+   MOBILE PEQUEÑO
+========================================================= */
+
+@media (max-width:576px){
+
+  .founders-title{
+    font-size:2rem;
+  }
+
+  .founders-subtitle{
+    font-size:.92rem;
+  }
+
+  .founder-photo{
+    height:280px;
+  }
+
+  .founder-info h3{
+    font-size:1.3rem;
+  }
+
+  .founder-info p{
+    font-size:.85rem;
+
+    line-height:1.7;
+  }
+
+  .btn-contact{
+    width:100%;
+  }
+
+}
+
+/* =========================================================
+   SECCIÓN RESEÑAS MINIMAL PREMIUM
+========================================================= */
+
+#reseñas{
+  position: relative;
+
+  padding: 6rem 1.5rem;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f7f7f7 50%,
+      #ffffff 100%
+    );
+}
+
+/* =========================================================
+   CONTENEDOR
+========================================================= */
+
+.reviews__inner{
+  max-width: 1200px;
+
+  margin: 0 auto;
+}
+
+/* =========================================================
+   TÍTULOS
+========================================================= */
+
+.reviews__title{
+  text-align: center;
+
+  font-size:
+    clamp(2.2rem, 5vw, 3.5rem);
+
+  font-family:
+    'Playfair Display',
+    serif;
+
+  color: #1a1a1a;
+
+  margin-bottom: 1rem;
+
+  font-weight: 700;
+
+  letter-spacing: -.5px;
+}
+
+.reviews__subtitle{
+  max-width: 720px;
+
+  margin:
+    0 auto 4rem;
+
+  text-align: center;
+
+  color:
+    rgba(0,0,0,.62);
+
+  line-height: 1.8;
+
+  font-size: .98rem;
+}
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.reviews__grid{
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0,1fr));
+
+  gap: 1.5rem;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.review-card{
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  padding: 2rem;
+
+  border-radius: 22px;
+
+  background: #ffffff;
+
+  border:
+    1px solid rgba(0,0,0,.06);
+
+  box-shadow:
+    0 6px 18px rgba(0,0,0,.06);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    border .25s ease;
+}
+
+/* =========================================================
+   HOVER SUAVE
+========================================================= */
+
+.review-card:hover{
+  transform:
+    translateY(-4px);
+
+  border:
+    1px solid rgba(0,0,0,.10);
+
+  box-shadow:
+    0 12px 24px rgba(0,0,0,.08);
+}
+
+/* =========================================================
+   ICONO
+========================================================= */
+
+.review-card__icon{
+  font-size: 2.2rem;
+
+  margin-bottom: 1rem;
+
+  color: #c96b2c;
+}
+
+/* =========================================================
+   TEXTO
+========================================================= */
+
+.review-card__text{
+  color:
+    rgba(0,0,0,.78);
+
+  line-height: 1.8;
+
+  font-size: .96rem;
+
+  font-style: italic;
+
+  margin-bottom: 2rem;
+}
+
+/* =========================================================
+   FOOTER CARD
+========================================================= */
+
+.review-card__footer{
+  margin-top: auto;
+}
+
+/* =========================================================
+   AUTOR
+========================================================= */
+
+.review-card__author{
+  color: #1a1a1a;
+
+  font-weight: 700;
+
+  font-size: .96rem;
+}
+
+/* =========================================================
+   ESTRELLAS
+========================================================= */
+
+.review-stars{
+  display: flex;
+
+  gap: .3rem;
+
+  margin-top: .8rem;
+
+  color: #d9a441;
+
+  font-size: .95rem;
+}
+
+/* =========================================================
+   RESPONSIVE TABLET
+========================================================= */
+
+@media (max-width: 992px){
+
+  .reviews__grid{
+    grid-template-columns:
+      repeat(2, minmax(0,1fr));
+  }
+
+}
+
+/* =========================================================
+   RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width: 768px){
+
+  #reseñas{
+    padding: 5rem 1rem;
+  }
+
+  .reviews__title{
+    font-size: 2rem;
+  }
+
+  .reviews__subtitle{
+    font-size: .94rem;
+
+    margin-bottom: 3rem;
+  }
+
+  .reviews__grid{
+    grid-template-columns: 1fr;
+  }
+
+  .review-card{
+    padding: 1.7rem;
+  }
+
+}
+
+/* =========================================================
+   MOBILE PEQUEÑO
+========================================================= */
+
+@media (max-width: 480px){
+
+  .reviews__title{
+    font-size: 1.8rem;
+  }
+
+  .review-card{
+    padding: 1.4rem;
+  }
+
+  .review-card__text{
+    font-size: .92rem;
+  }
+
+}
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.review-card__footer{
+  margin-top: auto;
+}
+
+/* =========================================================
+   AUTOR
+========================================================= */
+
+.review-card__author{
+  color: #ffb347;
+
+  font-weight: 600;
+
+  font-size: .96rem;
+
+  letter-spacing: .3px;
+}
+
+/* =========================================================
+   ESTRELLAS
+========================================================= */
+
+.review-stars{
+  display: flex;
+
+  gap: .35rem;
+
+  margin-top: .9rem;
+
+  color: #ffd166;
+
+  font-size: .95rem;
+}
+
+/* =========================================================
+   RESPONSIVE TABLET
+========================================================= */
+
+@media (max-width: 992px){
+
+  .reviews__grid{
+    grid-template-columns:
+      repeat(2, minmax(0,1fr));
+  }
+
+}
+
+/* =========================================================
+   RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width: 768px){
+
+  #reseñas{
+    padding: 5rem 1rem;
+  }
+
+  .reviews__title{
+    font-size: 2.1rem;
+  }
+
+  .reviews__subtitle{
+    font-size: .95rem;
+
+    margin-bottom: 3rem;
+  }
+
+  .reviews__grid{
+    grid-template-columns: 1fr;
+
+    gap: 1.4rem;
+  }
+
+  .review-card{
+    padding: 1.7rem;
+
+    border-radius: 20px;
+  }
+
+  .review-card__text{
+    font-size: .92rem;
+  }
+
+}
+
+/* =========================================================
+   MOBILE PEQUEÑO
+========================================================= */
+
+@media (max-width: 480px){
+
+  .reviews__title{
+    font-size: 1.8rem;
+  }
+
+  .review-card{
+    padding: 1.4rem;
+  }
+
+  .review-card__icon{
+    font-size: 2rem;
+  }
+}
+
+/* =========================================================
+   CONTACTO + FOOTER + WHATSAPP
+========================================================= */
+
+/* =========================================================
+   CONTACTO
+========================================================= */
+
+.contact-card-section{
+  position: relative;
+  overflow: hidden;
+
+  padding: 6rem 1.2rem;
+
+  background:
+    linear-gradient(
+      180deg,
+      #1e1e1e 0%,
+      #242424 50%,
+      #1e1e1e 100%
+    );
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.contact-card{
+  position: relative;
+
+  max-width: 900px;
+
+  margin: auto;
+
+  padding: 3.2rem;
+
+  border-radius: 26px;
+
+  background:
+    rgba(255,255,255,.06);
+
+  border:
+    1px solid rgba(255,255,255,.09);
+
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 12px 32px rgba(0,0,0,.20);
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.contact-header{
+  text-align: center;
+
+  max-width: 680px;
+
+  margin:
+    0 auto 3rem;
+}
+
+/* BADGE */
+
+.contact-badge{
+  display: inline-block;
+
+  padding:
+    .6rem 1.2rem;
+
+  border-radius: 50px;
+
+  background:
+    rgba(255,106,0,.10);
+
+  border:
+    1px solid rgba(255,106,0,.14);
+
+  color: #ffb347;
+
+  font-size: .85rem;
+  font-weight: 600;
+
+  margin-bottom: 1.3rem;
+}
+
+/* TITULO */
+
+.contact-title{
+  font-family:
+    'Playfair Display',
+    serif;
+
+  font-size:
+    clamp(2.2rem,5vw,3.6rem);
+
+  color: #fff;
+
+  margin-bottom: 1rem;
+
+  line-height: 1.1;
+
+  font-weight: 700;
+}
+
+/* LINEA */
+
+.contact-title::after{
+  content:"";
+
+  display:block;
+
+  width:90px;
+  height:3px;
+
+  margin:
+    1rem auto 0;
+
+  border-radius:50px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff6a00,
+      #dc3545
+    );
+}
+
+/* TEXTO */
+
+.contact-text{
+  color:
+    rgba(255,255,255,.72);
+
+  line-height:1.8;
+
+  font-size:.97rem;
+}
+
+/* =========================================================
+   FORMULARIO
+========================================================= */
+
+.contact-form{
+  display:grid;
+
+  gap:1.2rem;
+
+  max-width:700px;
+
+  margin:auto;
+}
+
+/* INPUTS */
+
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+
+  padding:16px 18px;
+
+  border:none;
+
+  border-radius:16px;
+
+  background:
+    rgba(255,255,255,.05);
+
+  border:
+    1px solid rgba(255,255,255,.06);
+
+  color:#fff;
+
+  font-size:.97rem;
+
+  transition:
+    border .3s ease,
+    background .3s ease,
+    box-shadow .3s ease;
+}
+
+/* PLACEHOLDER */
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{
+  color:
+    rgba(255,255,255,.45);
+}
+
+/* FOCUS */
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+  outline:none;
+
+  background:
+    rgba(255,255,255,.07);
+
+  border-color:
+    rgba(255,140,66,.28);
+
+  box-shadow:
+    0 0 12px rgba(255,106,0,.08);
+}
+
+/* TEXTAREA */
+
+.contact-form textarea{
+  resize:none;
+
+  min-height:170px;
+}
+
+/* =========================================================
+   BOTÓN
+========================================================= */
+
+.contact-form button{
+  border:none;
+
+  padding:16px;
+
+  border-radius:16px;
+
+  cursor:pointer;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff6a00,
+      #dc3545
+    );
+
+  color:#fff;
+
+  font-size:.97rem;
+  font-weight:600;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+/* HOVER */
+
+.contact-form button:hover{
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+    0 10px 25px rgba(255,80,0,.20);
+}
+
+/* =========================================================
+   INFO EXTRA
+========================================================= */
+
+.contact-extra{
+  display:flex;
+
+  justify-content:center;
+
+  gap:1rem;
+
+  flex-wrap:wrap;
+
+  margin-top:2.5rem;
+}
+
+/* ITEMS */
+
+.contact-extra__item{
+  display:flex;
+  align-items:center;
+
+  gap:.7rem;
+
+  padding:1rem 1.2rem;
+
+  border-radius:16px;
+
+  background:
+    rgba(255,255,255,.04);
+
+  border:
+    1px solid rgba(255,255,255,.05);
+
+  color:
+    rgba(255,255,255,.72);
+
+  font-size:.92rem;
+}
+
+/* ICONOS */
+
+.contact-extra__item i{
+  color:#ffb347;
+}
+
+/* =========================================================
+   FOOTER MÁS CLARO Y ELEGANTE
+========================================================= */
+
+.custom-footer{
+  position: relative;
+
+  padding: 5rem 1.5rem 2rem;
+
+  background:
+    linear-gradient(
+      180deg,
+      #1a1a1a 0%,
+      #222222 50%,
+      #181818 100%
+    );
+
+  border-top:
+    1px solid rgba(255,255,255,.06);
+
+  color: #ffffff;
+}
+
+/* =========================================================
+   CONTENEDOR
+========================================================= */
+
+.footer-container{
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+  gap:2.5rem;
+
+  max-width:1200px;
+
+  margin:auto;
+}
+
+/* =========================================================
+   TITULOS
+========================================================= */
+
+.footer-col h4{
+  position: relative;
+
+  font-size:1.1rem;
+
+  color:#ffb347;
+
+  margin-bottom:1.2rem;
+
+  font-weight:700;
+}
+
+/* LINEA */
+
+.footer-col h4::after{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  bottom:-8px;
+
+  width:45px;
+  height:2px;
+
+  border-radius:50px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff6a00,
+      #dc3545
+    );
+}
+
+/* =========================================================
+   TEXTOS
+========================================================= */
+
+.footer-col p{
+  color:
+    rgba(255,255,255,.78);
+
+  line-height:1.8;
+
+  font-size:.94rem;
+}
+
+/* LINKS */
+
+.footer-col a{
+  display:block;
+
+  color:
+    rgba(255,255,255,.75);
+
+  text-decoration:none;
+
+  margin-bottom:.6rem;
+
+  transition:
+    color .3s ease,
+    transform .3s ease;
+}
+
+.footer-col a:hover{
+  color:#ffb347;
+
+  transform:
+    translateX(4px);
+}
+
+/* =========================================================
+   REDES
+========================================================= */
+
+.footer-social{
+  display:flex;
+
+  gap:.8rem;
+
+  margin-top:1.2rem;
+}
+
+.footer-social a{
+  width:44px;
+  height:44px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  color:#fff;
+
+  font-size:1rem;
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+/* FACEBOOK */
+
+.footer-social a:nth-child(1){
+  background:#1877f2;
+}
+
+/* INSTAGRAM */
+
+.footer-social a:nth-child(2){
+  background:
+    linear-gradient(
+      135deg,
+      #f58529,
+      #dd2a7b,
+      #8134af
+    );
+}
+
+/* TIKTOK */
+
+.footer-social a:nth-child(3){
+  background:#2a2a2a;
+}
+
+/* HOVER */
+
+.footer-social a:hover{
+  transform:
+    translateY(-4px);
+
+  box-shadow:
+    0 10px 20px rgba(0,0,0,.25);
+}
+
+/* =========================================================
+   DIVISOR
+========================================================= */
+
+.footer-divider{
+  width:100%;
+  height:1px;
+
+  margin:2.5rem 0 1.5rem;
+
+  background:
+    rgba(255,255,255,.10);
+}
+
+/* =========================================================
+   COPYRIGHT
+========================================================= */
+
+.footer-bottom{
+  text-align:center;
+
+  color:
+    rgba(255,255,255,.58);
+
+  font-size:.85rem;
+
+  line-height:1.7;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:576px){
+
+  .custom-footer{
+    padding:4rem 1rem 2rem;
+  }
+
+  .footer-container{
+    grid-template-columns:1fr;
+
+    text-align:center;
+
+    gap:2rem;
+  }
+
+  .footer-col h4::after{
+    left:50%;
+
+    transform:
+      translateX(-50%);
+  }
+
+  .footer-social{
+    justify-content:center;
+  }
+
+}
+/* =========================================================
+   WHATSAPP FLOAT
+========================================================= */
+
+.whatsapp-fab{
+  position: fixed;
+
+  right: 20px;
+  bottom: 20px;
+
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #25d366;
+
+  color: #fff;
+
+  font-size: 30px;
+
+  text-decoration: none;
+
+  z-index: 9999;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.25);
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+/* HOVER */
+
+.whatsapp-fab:hover{
+  transform:
+    translateY(-5px);
+
+  box-shadow:
+    0 15px 30px rgba(0,0,0,.35);
+}
+
+/* MOBILE */
+
+@media(max-width:576px){
+
+  .whatsapp-fab{
+    width:55px;
+    height:55px;
+
+    font-size:26px;
+
+    right:15px;
+    bottom:15px;
+  }
+
+}
